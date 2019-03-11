@@ -1,0 +1,204 @@
+{% extends 'base.twig' %}
+
+
+{% block content %}
+
+<!-- MODAL -->
+<div class="modal fade" id="modalEditShoe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit shoe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+            <div class="mb30" id="errorFieldsEdit"></div>
+            <form id="formEditUser">
+                <div class="row pt30">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Nickname</label>
+                      <input id="editNickname" name="Nickname" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Name</label>
+                      <input id="editName" name="Name" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Last Names</label>
+                      <input id="editLastNames" name="Surnames" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Mail</label>
+                      <input id="editMail" name="Mail" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Replace Password</label>
+                      <input id="editPassword" name="Password" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">Active
+                            	<input class="form-check-input" id="editActive" name="activo" type="checkbox" value="">
+                            	<span class="form-check-sign">
+                            		<span class="check"></span>
+                            	</span>
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                        <!--<input id="newAdmin" name="administrador" type="checkbox" class="form-control">-->
+                        <div class="form-check">
+                            <label class="form-check-label">Admin
+                            	<input class="form-check-input" id="editAdmin" name="administrador" type="checkbox" value="">
+                            	<span class="form-check-sign">
+                            		<span class="check"></span>
+                            	</span>
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-default jsBtCancel">Cancel</button>
+            <button class="btn btn-primary" id="jsBtConfirmEditUser" data-id="">Save</button>
+        </div>
+    </div>
+  </div>
+</div><!--END MODAL -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Table of users</h4>
+          <p class="card-category">List of the users</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table myDataTable" id="js-userTable" data-ajax="ajax/getadminusers">
+              <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nickname</th>
+                    <th>Name</th>
+                    <th>Last names</th>
+                    <th>Mail</th>
+                    <th>Date</th>
+                    <th>Active</th>
+                    <th>Admin</th>
+                    <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody id="dataTableUser">
+              </tbody>
+              </table>
+              <div id="js-paginateUser">
+                <h4>Loading data...</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 col-sm-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">New User</h4>
+              <p class="card-category">You can add a new user here.</p>
+            </div>
+            <div class="card-body">
+              <div class="mb30" id="errorFields"></div>
+              <form id="formUser">
+                <div class="row pt30">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Nickname</label>
+                      <input id="newNickname" name="Nickname" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Name</label>
+                      <input id="newName" name="Name" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Last Names</label>
+                      <input id="newLastNames" name="Surnames" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Mail</label>
+                      <input id="newMail" name="Mail" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Inital password</label>
+                      <input id="newPassword" name="Password" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">Active
+                            	<input class="form-check-input" id="newActive" name="activo" type="checkbox" value="">
+                            	<span class="form-check-sign">
+                            		<span class="check"></span>
+                            	</span>
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                        <!--<input id="newAdmin" name="administrador" type="checkbox" class="form-control">-->
+                        <div class="form-check">
+                            <label class="form-check-label">Admin
+                            	<input class="form-check-input" id="newAdmin" name="administrador" type="checkbox" value="">
+                            	<span class="form-check-sign">
+                            		<span class="check"></span>
+                            	</span>
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <button id="btCreateUser" type="submit" class="btn btn-primary pull-right">Create</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <div class="col-lg-5 col-sm-12 rshoe card">
+      </div>
+    </div>
+  </div>
+{% endblock %}

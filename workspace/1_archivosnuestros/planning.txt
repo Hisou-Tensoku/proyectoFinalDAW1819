@@ -1,0 +1,30 @@
+
+Tareas por orden:
+-Logo                           Toni, Imanol supervisa.
+-Diseño editado.                Toni, Imanol, Otros supervisan.
+
+-Wordpress.                     Imanol. + Se planeara cuando se llegue.
+    -Index                      
+    -Single
+    -Archive
+    -Archives
+    -Search
+    -Comments
+    -Authors
+
+-Doctrine & Tablas por usar.    Mirio, Todos supervisan.
+-MVC.                           Todos (sin pisarnos los arcvhivos) Se planeara en el futuro.
+
+
+
+Fechas de objetivos:
+-Logo                           Dia 30 Feb.
+-Doctrine & Tablas BD           Dia 6 Feb.
+-Diseño finiquitado.            Dia 13 Feb.
+
+-Wordpress: 1 semana y media.
+-Todo el MVC: 3 semanas.
+
+
+
+Decidir e integrar tecnologías adicionales: Vue.js

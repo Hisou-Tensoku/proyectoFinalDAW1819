@@ -1,0 +1,9 @@
+Apuntes, registro, links bootstrap, explicacion aqui en c9.
+Archivos grandes y de facil comparticion -> Google drive
+
+
+
+
+commontemplates-> Cachos de pagina comunes de WP y MVC.
+mvcfiles->las clases del MVC.
+classes-> Clases varias.

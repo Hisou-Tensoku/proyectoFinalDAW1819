@@ -1,0 +1,12 @@
+Templates de bootstrap para fusilar:
+https://www.p448shoes.com/
+http://themes.semicolonweb.com/html/canvas/  TIENE CHECKOUT, LOGIN, estilo regulero, no tiene pa tallas.
+***http://foundry.mediumra.re/                 TIENE CHECKOUT, LOGIN estilo bonico, no tiene pa tallas.
+***http://themes.89elements.com/definity-html/                  No tiene demo tienda ni checkout
+http://demo.hasthemes.com/monsta/index.html   TIENE H-BARS.
+
+
+ESCOGIDO:
+*****http://rhythm.bestlooker.pro/                  Desventaja : No tiene checkout.
+******http://www.inspirothemes.com/polo-v4/preview/index.html      Desventaja: Blog sidabar
+******http://www.themezaa.com/html/h-code/index.php             TODO PERFECC

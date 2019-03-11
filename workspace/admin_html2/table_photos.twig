@@ -1,0 +1,173 @@
+{% extends 'base.twig' %}
+
+{% block sidebar %}
+<div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item  ">
+        <a class="nav-link" href="/dashboard">
+          <i class="material-icons">dashboard</i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./user.html">
+          <i class="material-icons">person</i>
+          <p>User Profile</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+    		<a class="nav-link active" href="admin/viewproducts">
+    			<i class="material-icons">flash_on</i>
+    			<p>Shoes</p>
+    		</a>
+    	</li>
+      <li class="nav-item ">
+				<a class="nav-link" href="admin/viewusers">
+					<i class="material-icons">person_add</i>
+					<p>Users</p>
+				</a>
+			</li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./icons.html">
+          <i class="material-icons">bubble_chart</i>
+          <p>Icons</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./map.html">
+          <i class="material-icons">location_ons</i>
+          <p>Maps</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./notifications.html">
+          <i class="material-icons">notifications</i>
+          <p>Notifications</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./rtl.html">
+          <i class="material-icons">language</i>
+          <p>RTL Support</p>
+        </a>
+      </li>
+      <li class="nav-item active-pro ">
+        <a class="nav-link" href="./upgrade.html">
+          <i class="material-icons">unarchive</i>
+          <p>Upgrade to PRO</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Table of photos</h4>
+          <p class="card-category">List of photos</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table myDataTable" data-ajax="ajax/getadminusers">
+              <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Shoe ID</th>
+                    <th>URL</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="dataTable-photo">
+                
+                {% for photo in listphotos %}
+                    <tr class="even gradeC js-row itemrow" data-id="{{photo.id}}">
+                        <td>{{photo.id}}</td>
+                        <td>{{photo.zapato}}</td>
+                        <td>{{photo.ruta}}</td>
+                        <td><a href="#" class="editUser">Edit</a></td>
+                        <td data-id="{{photo.id}}"><a href="#" class="editUser">&#10005;</a></td>
+                    </tr>
+                {% endfor %}
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-sm-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">New User</h4>
+              <p class="card-category">You can add a new user here.</p>
+            </div>
+            <div class="card-body">
+              <div class="mb30" id="errorFields"></div>
+              <form id="formUser">
+                <div class="row pt30">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Nickname</label>
+                      <input id="newNickname" name="Nickname" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Name</label>
+                      <input id="newName" name="Name" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Last Names</label>
+                      <input id="newLastNames" name="Surnames" type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Mail</label>
+                      <input id="newMail" name="Mail" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Inital password</label>
+                      <input id="newPassword" name="Password" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Active</label>
+                      <input id="newActive" name="activo" type="checkbox" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Admin</label>
+                      <input id="newAdmin" name="administrador" type="checkbox" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <button id="btCreateUser" type="submit" class="btn btn-primary pull-right">Create</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <div class="col-lg-4 col-sm-12 rshoe card">
+        <h1> </h1>
+        <h1> </h1>
+        <h1> </h1>
+      </div>
+    </div>
+  </div>
+{% endblock %}

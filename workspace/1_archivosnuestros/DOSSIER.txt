@@ -1,0 +1,14 @@
+Jue 17/01/2018
+Workspace compartido HECHO
+Workspace con wordpress HECHO
+Workspace php7 HECHO
+
+Vie 18/01/2018 ===================================
+Elegir tema bootstrap DONE
+Decidir logo OK
+
+
+PARA HACER TODAVIA==============
+MVC setup.
+COMPILAR EL DOCTRINE DE CARMELO (config base de datos)
+Como dividir el proyecto para no pisarnos?

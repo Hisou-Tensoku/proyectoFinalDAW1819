@@ -1,0 +1,195 @@
+{% include '_head.html' %} {% include '_nav.html' %}
+
+<!-- content section -->
+<section>
+    <div class="container">
+        <div class="row v-align">
+            <!-- product images -->
+            <div class="col-md-6 col-sm-12 zoom-gallery sm-margin-bottom-ten">
+                    {% for key, img in product.fotos %}
+                        {% if loop.first %}
+                                <a href="{{img.ruta}}"><img src="{{img.ruta}}" alt=""/></a>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="products-thumb text-center">
+                        {% for key, img in product.fotos %}
+                            {% if loop.first==false %}
+                                <a href="{{img.ruta}}"><img src="{{img.ruta}}" alt=""/></a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+            </div>
+            <!-- end product images -->
+            <div class="col-md-5 col-sm-12 col-md-offset-1">
+                <!-- product rating -->
+                <div class="rating margin-five no-margin-top">
+                    <span class="rating-text text-uppercase pull-right">SKU: <span class="black-text">{{product.id}}</span></span>
+                </div>
+                <!-- end product rating -->
+                <!-- product name -->
+                <span class="product-name-details text-uppercase font-weight-600 letter-spacing-2 black-text">{{product.marca}} {{product.modelo}}</span>
+                <!-- end product name -->
+                <!-- product stock -->
+                {% if stock == false %}
+                    <h3 class="text-uppercase letter-spacing-2 margin-two">No Stock</h3>
+                {% elseif stock==true %}
+                    <p class="text-uppercase letter-spacing-2 margin-two">In Stock</p>
+                {% endif %}
+                <!-- end product stock -->
+                <div class="separator-line bg-black no-margin-lr margin-five"></div>
+                <span class="price black-text title-small">{{product.ppu}} €</span>
+                
+                {% if stock == true %}
+                <div class="col-md-3 col-sm-3 no-padding-left margin-five">
+                    <div class="select-style med-input xs-med-input shop-shorting-details no-border-round">
+                        <!-- product qty -->
+                        <select id="js-tallaSelect" data-shoeid="{{product.id}}">
+                            {% for t in product.tallas %}
+                           <option value="{{t.numero}}">{{t.numero}}</option>
+                            {% endfor %}
+                        </select>
+                        <!-- end product qty -->
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 no-padding margin-five">
+                    <!-- add to bag button -->
+                    <button class="highlight-button-dark btn btn-medium button" id="addToCart" data-pid="{{product.id}}" ><i class="icon-basket"></i> Add To Cart</button>
+                    <!-- end add to bag button -->
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="border-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <ul class="instructions">
+                            <li><strong>Sole:</strong> {{ product.suela }}</li>
+                            <li><strong>Lining:</strong> {{ product.forro }}</li>
+                            <li><strong>Cover:</strong> {{ product.cubierta }}</li>
+                            <li><strong>Color:</strong> {{ product.color }}</li>
+                        </ul>
+                    </div>
+                        <div class="col-md-6 col-sm-12 sm-margin-top-seven">
+                            <p>{{ product.descripcion }}</p>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+<section class="border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="section-title">Related Products (DO AN AJAX)</h3>
+            </div>
+        </div>
+        <div class="row">
+            <!-- related products slider -->
+            <div id="shop-products" class="owl-carousel owl-theme dark-pagination owl-no-pagination owl-prev-next-simple">
+                <!-- shop item -->
+                <div class="item">
+                    <div class="home-product text-center position-relative overflow-hidden">
+                        <a href="shop-single-product.html"><img src="images/product12.jpg" alt=""/></a>
+                        <span class="product-name text-uppercase"><a href="shop-single-product.html">Richard Nicoll</a></span>
+                        <span class="price black-text">$680</span>
+                        <div class="quick-buy">
+                            <div class="product-share">
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end shop item -->
+                <!-- shop item -->
+                <div class="item">
+                    <div class="home-product text-center position-relative overflow-hidden">
+                        <a href="shop-single-product.html"><img src="images/product13.jpg" alt=""/></a>
+                        <span class="product-name text-uppercase"><a href="shop-single-product.html">Roland Mouret</a></span>
+                        <span class="price black-text">$980</span>
+                        <div class="quick-buy">
+                            <div class="product-share">
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end shop item -->
+                <!-- shop item -->
+                <div class="item">
+                    <div class="home-product text-center position-relative overflow-hidden">
+                        <a href="shop-single-product.html"><img src="images/product14.jpg" alt=""/></a>
+                        <span class="product-name text-uppercase"><a href="shop-single-product.html">Preen Line</a></span>
+                        <span class="price black-text">$750</span>
+                        <div class="quick-buy">
+                            <div class="product-share">
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end shop item -->
+                <!-- shop item -->
+                <div class="item">
+                    <div class="home-product text-center position-relative overflow-hidden">
+                        <a href="shop-single-product.html"><img src="images/product15.jpg" alt=""/></a>
+                        <span class="product-name text-uppercase"><a href="shop-single-product.html">Balmain</a></span>
+                        <span class="price black-text">$350</span>
+                        <div class="quick-buy">
+                            <div class="product-share">
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end shop item -->
+                <!-- shop item -->
+                <div class="item">
+                    <div class="home-product text-center position-relative overflow-hidden">
+                        <a href="shop-single-product.html"><img src="images/product16.jpg" alt=""/></a>
+                        <span class="product-name text-uppercase"><a href="shop-single-product.html">Dolce & Gabbana</a></span>
+                        <span class="price black-text">$700</span>
+                        <div class="quick-buy">
+                            <div class="product-share">
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end shop item -->
+                <!-- shop item -->
+                <div class="item">
+                    <div class="home-product text-center position-relative overflow-hidden">
+                        <a href="shop-single-product.html"><img src="images/product4.jpg" alt=""/></a>
+                        <span class="product-name text-uppercase"><a href="shop-single-product.html">Valentino</a></span>
+                        <span class="price black-text">$370</span>
+                        <div class="quick-buy">
+                            <div class="product-share">
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end shop item -->
+            </div>
+            <!-- end related products slider -->
+        </div>
+    </div>
+</section>
+<!-- end content section -->
+{% include '_footer.html' %}

@@ -1,0 +1,91 @@
+{% include '_head.html' %}
+{% include '_nav.html' %}
+        <!-- head section -->
+        <section class="content-top-margin page-title page-title-small border-bottom-light border-top-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
+                        <!-- page title -->
+                        <h1 class="black-text">Register</h1>
+                        <!-- end page title -->
+                    </div>
+                    <div class="col-md-4 col-sm-12 breadcrumb wow fadeInUp xs-display-none" data-wow-duration="600ms">
+                        <!-- breadcrumb -->
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li>Register</li>
+                        </ul>
+                        <!-- end breadcrumb -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end head section -->
+
+        <!-- content section -->
+        <section class="bg-gray wow fadeIn">
+            <div class="container">
+                <div class="row v-align">
+                    <div class="col-md-6 col-sm-8 col-xs-11 ">
+                        <img class="img-fluid" src="assets/img/bunchofshoes.jpg">
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-11 ">
+                        <form action="user/doregister" method="post" enctype="multipart/form-data" id="registerForm">
+                            <div class="form-group no-margin-bottom">
+                                <!-- label  -->
+                                <label>Username *</label>
+                                <!-- end label  -->
+                                <!-- input  -->
+                                <input type="text" name="alias" id="alias" class="input-round big-input">
+                                <!-- end input  -->
+                            </div>
+                            <div class="form-group no-margin-bottom">
+                                <!-- label  -->
+                                <label>Name *</label>
+                                <!-- end label  -->
+                                <!-- input  -->
+                                <input type="text" name="nombre" id="nombre" class="input-round big-input">
+                                <!-- end input  -->
+                            </div>
+                            <div class="form-group no-margin-bottom">
+                                <!-- label  -->
+                                <label>Surname *</label>
+                                <!-- end label  -->
+                                <!-- input  -->
+                                <input type="text" name="apellidos" id="apellidos" class="input-round big-input">
+                                <!-- end input  -->
+                            </div>
+                            <div class="form-group no-margin-bottom">
+                                <!-- label  -->
+                                <label>Email * </label>
+                                <!-- end label  -->
+                                <!-- input  -->
+                                <input type="text" name="correo" id="correo" class="input-round big-input">
+                                <!-- end input  -->
+                            </div>
+                            <div class="form-group no-margin-bottom">
+                                <!-- label  -->
+                                <label>Password *</label>
+                                <!-- end label  -->
+                                <!-- input  -->
+                                <input type="password" name="clave" id="clave" class="input-round big-input">
+                                <!-- end input  -->
+                            </div>
+                            <div class="form-group no-margin-bottom">
+                                <!-- label  -->
+                                <label>Re-Enter Password *</label>
+                                <!-- end label  -->
+                                <!-- input  -->
+                                <input type="password" name="repiteclave" id="repiteclave" class="input-round big-input">
+                                <!-- end input  -->
+                            </div>
+                            <button class="btn highlight-button-dark btn-small btn-round margin-five no-margin-right" type="submit">Register Now</button><br>
+                            <a href="user/login">Already have an account?</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end content section -->
+{% include '_footer.html' %}

@@ -1,0 +1,369 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+<!-- MODAL -->
+<div class="modal fade" id="modalEditShoe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit shoe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+            <div class="mb30" id="errorFieldsEdit"></div>
+            <form id="formEditShoe">
+                <div class="row pt30">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Brand</label>
+                      <input id="editBrand" name="Brand" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">Model</label>
+                      <input id="editModel" name="Model" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="">PPU €</label>
+                      <input id="editPpu" name="PPU" type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="">Color</label>
+                      <input id="editColor" name="Color" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="">Cover</label>
+                      <input id="editCover" name="Cover" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="">Forro</label>
+                      <input id="editForro" name="Forro" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="">Sole</label>
+                      <input id="editSole" name="Sole" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label class="" >Categories</label>
+                    <div class="form-group mychoices jsCatList" id="jsCatListEdit">
+                      {% for category in categories %}
+                        <label>
+                          <input type="checkbox" name="Category" value="{{category.id}}">
+                          {{category.nombre}}
+                        </label>
+                      {% endfor %}
+                    </div>
+                    <div class="form-group row">
+                        <label class="">Add new category</label>
+                        <input id="editNewCategory" type="text" class="form-control col-md-10">
+                        <button class="btadd add-cat-public" data-accion="addcategory">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <label class="" >Publics</label>
+                    <div class="form-group mychoices jsPubList" id="jsPubListEdit">
+                      {% for public in publics %}
+                        <label>
+                          <input type="radio" name="Public" value="{{public.id}}" 
+                            {% if loop.first %}
+                              checked
+                            {% endif %}
+                          >
+                           {{public.nombre}}
+                        </label>
+                      {% endfor %}
+                    </div>
+                    <div class="form-group row">
+                      <label class="">Add new public</label>
+                      <input id="editNewPublic" type="text" class="form-control col-md-10">
+                      <button class="btadd add-cat-public" data-accion="addpublic">
+                        <i class="fa fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description</label>
+                      <div class="form-group">
+                        <label class="">Information about the shoe.</label>
+                        <textarea id="editDescription" class="form-control" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </form>
+      
+      </div>
+      
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default jsBtCancel">Cancel</button>
+        <button class="btn btn-primary" id="jsBtConfirmEditShoe" data-id="">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL-->
+<!-- MODAL SIZES-->
+<div class="modal fade" id="modalEditSize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit shoe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3" >
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Stock</th>
+                            <th>Remove row</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jstableSize">
+                    </tbody>
+                </table>
+                <div class="jsAfterTableSize pt-100"></div>
+            </div>
+      
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default jsBtCancel">Cancel</button>
+                <button id="jsBtConfirmSize" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- END MODAL SIZES -->
+<!-- MODAL PHOTOS-->
+<div class="modal fade" id="modalPhotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit shoe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3" >
+            <div class="table-responsive">
+                <table class="table mb-2">
+                    <thead>
+                        <tr>
+                            <th>Photo ID</th>
+                            <th>Shoe ID</th>
+                            <th>URL</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jstablePhotos">
+                    </tbody>
+                </table>
+                <div class="jsAfterTablePhotos">
+                    <input type="text" placeholder="Photo url" style="width: 100%;">
+                    <button href="#" class="newPhoto btn btn-light">Add a new photo</button>
+                </div>
+            </div>
+      
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default jsBtCancel">Cancel</button>
+                <button id="jsBtConfirmPhotos" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- END MODAL PHOTOS -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Table of shoes</h4>
+          <p class="card-category">List of the shoes</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table myDataTable" id="js-shoeTable" data-ajax="ajax/getadminshoes">
+              <thead class=" text-primary">
+                <tr>
+                  <th>ID</th>
+                  <th>Brand</th>
+                  <th>Model</th>
+                  <th>Price</th>
+                  <th>Color</th>
+                  <th class="text-center">Store</th>
+                  <th class="text-center">Photos</th>
+                  <th class="text-center">Sizes</th>
+                  <th class="text-center">Edit</th>
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+              <tbody id="dataTableShoe">
+              </tbody>
+            </table>
+            <div id="js-paginateShoe">
+                <h4>Loading data...</h4>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-sm-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">New Shoe</h4>
+              <p class="card-category">You can add a new shoe here.</p>
+            </div>
+            <div class="card-body">
+              <div class="mb30" id="errorFields"></div>
+              <form id="formShoe">
+                <div class="row pt30">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Brand</label>
+                      <input id="newBrand" name="Brand" type="text" class="form-control" data-mindigits="2">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Model</label>
+                      <input id="newModel" name="Model" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">PPU €</label>
+                      <input id="newPpu" name="PPU" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Color</label>
+                      <input id="newColor" name="Color" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Cover</label>
+                      <input id="newCover" name="Cover" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Forro</label>
+                      <input id="newForro" name="Forro" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Sole</label>
+                      <input id="newSole" name="Sole" type="text" class="form-control" data-mindigits="3">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label class="bmd-label-floating" >Categories</label>
+                    <div class="form-group mychoices jsCatList" id="listCat">
+                      {% for category in categories %}
+                        <label>
+                          <input type="checkbox" name="Category" value="{{category.id}}">
+                          {{category.nombre}}
+                        </label>
+                      {% endfor %}
+                    </div>
+                    <div class="form-group row">
+                        <label class="bmd-label-floating">Add new category</label>
+                        <input id="newCategory" type="text" class="form-control col-md-10">
+                        <button class="btadd add-cat-public" data-accion="addcategory" 
+                        rel="tooltip" title="" data-original-title="3 letters at least">
+                              <i class="fa fa-plus"></i>
+                            <div class="ripple-container"></div></button>
+                        </button>
+                      </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <label class="bmd-label-floating" >Publics</label>
+                    <div class="form-group mychoices jsPubList" id="listPub">
+                      {% for public in publics %}
+                        <label>
+                          <input type="radio" name="Public" value="{{public.id}}" 
+                            {% if loop.first %}
+                              checked
+                            {% endif %}
+                          >
+                           {{public.nombre}}
+                        </label>
+                      {% endfor %}
+                    </div>
+                    <div class="form-group row">
+                      <label class="bmd-label-floating">Add new public</label>
+                      <input id="newPublic" type="text" class="form-control col-md-10">
+                      <button class="btadd add-cat-public" data-accion="addpublic" 
+                      rel="tooltip" title="" data-original-title="3 letters at least">
+                        <i class="fa fa-plus"></i>
+                        <div class="ripple-container"></div></button>
+                      </button>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description</label>
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Information about the shoe.</label>
+                        <textarea id="newDescription" class="form-control" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button id="btCreateShoe" type="submit" class="btn btn-primary pull-right btCreateShoe">Create</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <div class="col-lg-4 col-sm-12 rshoe card">
+      </div>
+    </div>
+  </div>
+{% endblock %}

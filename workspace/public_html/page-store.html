@@ -1,0 +1,154 @@
+{% include '_head.html' %} {% include '_nav.html' %}
+        <!-- head section -->
+        <section class="page-title parallax3 parallax-fix page-title-large page-title-shop">
+            <div class="opacity-light bg-dark-gray"></div>
+            <img class="parallax-background-img" src="/assets/img/store-fire.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 wow fadeIn">
+                        <!-- page title tagline -->
+                        <span class="text-uppercase white-text">Get your fire here</span>
+                        <!-- end title tagline -->
+                        <!-- page title -->
+                        <h1 class="white-text">Collection</h1>
+                        <!-- end page title -->
+                    </div>
+                    <div class="col-md-12 col-sm-12 breadcrumb text-uppercase margin-three no-margin-bottom wow fadeIn">
+                        <!-- breadcrumb -->
+                        <ul>
+                            <li><a class="white-text" href="#">Home</a></li>
+                            <li class="white-text"><a class="white-text" href="#">Shop</a></li>
+                            <li class="white-text">Collection</li>
+                        </ul>
+                        <!-- end breadcrumb -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end head section -->
+        <!-- content section -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <!-- sidebar  -->
+                    <div class="col-md-3 col-sm-4 sidebar">
+                        <!-- widget  -->
+                        <div class="widget">
+                            <div class="widget-body">
+                                <form>
+                                    <i class="fa fa-search close-search search-button" id="js-srcBtn"></i>
+                                <input type="text" placeholder="Search..." class="search-input" id="js-srcIn" name="search">
+                            </form>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                        <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Demographic</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="category-list" id="js-destList">
+                                    
+                                    {% for key, value in dest %}
+                                        <li>
+                                            <input class="js-destLoad" type="checkbox" name="shop-dest-{{ value.id }}" value="{{ value.id }}" />
+                                            <label for="shop-dest-{{ value.id }}">{{ value.nombre }}</label>
+                                        </li>
+                                    {% endfor %}
+                                    <!--
+                                        <li class="active"><a href="#">Dresses<span>48</span></a></li>
+                                    -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                        <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Categories</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="category-list" id="js-categList">
+                                    {% for key, value in categories %}
+                                        <li>
+                                            <input class="js-filterLoad" type="checkbox" name="shop-categ-{{ value.id }}" value="{{ value.id }}"/>
+                                            <label for="shop-categ-{{ value.id }}">{{ value.nombre }}</label>
+                                        </li>
+                                    {% endfor %}
+                                    <!--
+                                    <li class="active"><a href="#">Amuse Society<span>48</span></a></li>
+                                    -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                        <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Shop By Size</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="category-list shop-price" id="js-sizeList">
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                        <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Shop By Price</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="category-list shop-price" id="js-priceList">
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                    </div>
+                    <!-- end sidebar  -->
+                    <div class="col-md-8 col-sm-8 col-md-offset-1">
+                        <div class="shorting clearfix xs-margin-top-three">
+                            <div class="col-md-8 col-sm-7 grid-nav">
+                                <p class="text-uppercase letter-spacing-1 sm-display-none" id="js-shopNumbers">Showing 1–12 of 22 results</p>
+                            </div>
+                            <div class="col-md-3 col-sm-5 pull-right">
+                                <div class="select-style input-round med-input shop-shorting no-border">
+                                    <select id="js-orderSel">
+                                        <option selected value="DATE">Date added</option>
+                                        <option value="ALP">Alphabetical A-Z</option>
+                                        <option value="PRUP">Price ASC</option>
+                                        <option value="PRDN">Price DESC</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- shop item 
+                            <div class="col-md-6 col-sm-6">
+                                <div class="home-product text-center position-relative overflow-hidden margin-ten no-margin-top">
+                                    <a href="shop-single-product.html"><img src="images/product9.jpg" alt=""/></a>
+                                    <span class="product-name text-uppercase"><a href="shop-single-product.html">Gianvito Rossi</a></span>
+                                    <span class="price black-text"><del>$750.00</del>$450</span>
+                                    <span class="onsale onsale-style-2">Sale</span>
+                                    <div class="quick-buy">
+                                        <div class="product-share">
+                                            <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                            <a href="#" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Compare"><i class="fa fa-refresh"></i></a>
+                                            <a href="shop-cart.html" class="highlight-button-dark btn btn-small no-margin-right quick-buy-btn" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end shop item -->
+                        
+                            <div class="product-listing margin-three" id="js-itemTable">
+                                
+                            </div>
+                        <!-- pagination -->
+                        <div class="pagination margin-ten no-margin-bottom" id="js-paginateStore">
+                            
+                        </div>
+                        <!-- end pagination -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end content section -->
+{% include '_footer.html' %}
+
